@@ -10,20 +10,19 @@ namespace DataModel
         [Column("id")]
         public int Id { get; set; }
 
-        [Column("genus")]
+        [Column("scientificName")]
         [StringLength(50)]
-        public string Genus { get; set; } = null!;
+        public string ScientificName { get; set; } = null!;
 
-        [Column("name")]
+        [Column("colloquialName")]
         [StringLength(50)]
-        public string Name { get; set; } = null!;
+        public string ColloquialName { get; set; } = null!;
 
-        [ForeignKey("FamilyId")]
-        [InverseProperty("Species")]
-        public virtual Family Family { get; set; } = null!;
+        [Column("genusId")]
+        public int GenusId { get; set; }
 
-        [ForeignKey("ContinentId")]
+        [ForeignKey("GenusId")]
         [InverseProperty("Species")]
-        public virtual Continent Continent { get; set; } = null!;
+        public virtual Genus Genus { get; set; } = null!;
     }
 }

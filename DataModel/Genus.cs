@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DataModel
 {
-    public class Family
+    public class Genus
     {
         [Key]
         [Column("id")]
@@ -16,6 +16,9 @@ namespace DataModel
         [Column("colloquialName")]
         [StringLength(50)]
         public string ColloquialName { get; set; } = null!;
+
+        [InverseProperty("Genus")]
+        public virtual ICollection<Species> Species { get; set; } = new List<Species>();
 
     }
 }

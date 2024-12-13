@@ -9,6 +9,10 @@ namespace DataModel
         [Column("id")]
         public int Id { get; set; }
 
+        [Column("image")]
+        [StringLength(50)]
+        public string Image { get; set; } = null!;
+
         [ForeignKey("ColorId")]
         [InverseProperty("SpeciesColor")]
         public virtual Color Color { get; set; } = null!;
